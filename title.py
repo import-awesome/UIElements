@@ -17,13 +17,13 @@ class Title(object):
 		self.start_t = self.small.render(self.start, 1, WHITE)
 		self.quit = "Quit"
 		self.quit_t = self.small.render(self.quit, 1, WHITE)
-		self.options = "Options"
+		self.options = "Load Game"
 		self.option_t = self.small.render(self.options, 1, WHITE)
 		self.size_x = win_x
 		self.size_y = win_y
-		self.selector_x = 130
+		self.selector_x = 190
 		self.selector_y = 40
-		self.sel_x = self.size_x/2 - 55
+		self.sel_x = self.size_x/2 - 115
 		self.sel_y = self.size_y/2
 		self.screen = s
 
@@ -41,7 +41,6 @@ class Title(object):
 					if event.key == pygame.K_UP:
 						if self.sel_y != self.size_y/2:
 							self.sel_y += -40
-							self.selector_x = 130
 					if event.key == pygame.K_DOWN:
 						if self.sel_y != self.size_y/2 + 80:
 							self.sel_y += 40
@@ -50,7 +49,7 @@ class Title(object):
 							display = False
 
 
-						if self.sel_y == self.size_y/2 + 80:
+						if self.sel_y == self.size_y/2 + 40:
 							display = False
 							go = True
 
@@ -58,9 +57,9 @@ class Title(object):
 			pygame.draw.rect(self.screen, WHITE, [self.sel_x, self.sel_y, self.selector_x, self.selector_y])
 			pygame.draw.rect(self.screen, BLACK, [self.sel_x+2, self.sel_y+2, self.selector_x-4, self.selector_y-4])
 
-			self.screen.blit(self.start_t, (self.size_x/2 - 50, self.size_y/2))
-			self.screen.blit(self.option_t, (self.size_x/2 - 50, (self.size_y/2)+40))
-			self.screen.blit(self.quit_t, (self.size_x/2 - 50, (self.size_y/2)+80))
+			self.screen.blit(self.start_t, (self.size_x/2 - 110, self.size_y/2))
+			self.screen.blit(self.option_t, (self.size_x/2 - 110, (self.size_y/2)+40))
+			self.screen.blit(self.quit_t, (self.size_x/2 - 110, (self.size_y/2)+80))
 			clock.tick(60)
 			pygame.display.flip()
 

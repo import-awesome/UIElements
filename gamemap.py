@@ -1,3 +1,6 @@
+"""Made by Michael Chung"""
+
+
 import pygame
 import math
 import gameui
@@ -28,6 +31,8 @@ SU = "S"
 SD = "S"
 
 cols = "0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4"
+
+"""This is a recreation of the first floor of the first stratum in Persona Q"""
 s1_f1 = [
 			[Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q],
 			[Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q],
@@ -117,6 +122,9 @@ class ShowMaze(object):
 		self.winx = win_x
 		self.winy = win_y
 		self.map = maps
+		self.start = self.find(B)
+		self.charx = self.start[0]
+		self.chary = self.start[1]
 
 	def find(self, q):
 		c = 0
@@ -227,6 +235,7 @@ class ShowMaze(object):
 				r += 1
 			c += 1
 			r = 0
+		pygame.draw.rect(self.screen, BLACK, (math.floor(2 + self.charx * 525 / 35), math.floor(3 + self.chary * 450 / 30), 10, 10))
 
 	def printmap(self):
 		print cols
@@ -290,7 +299,7 @@ if __name__ == "__main__":
 
 		
 		screen.fill(BLACK)
-	#	maze.Display()
+		maze.Display()
 		maze.fog(charx, chary)
 		pygame.draw.rect(screen, BLACK, (math.floor(2 + charx * 525 / 35), math.floor(3 + chary * 450 / 30), 10, 10))
 		gui.Display()
@@ -299,3 +308,6 @@ if __name__ == "__main__":
 		pygame.display.flip()
 
 	pygame.quit()
+
+#class Maze(object):
+#	def __init__(self, screen, win_x, win_y, map):
