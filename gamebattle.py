@@ -1,6 +1,7 @@
 import pygame
 from gameui import Turn
 import math
+import gamemusic
 import random
 pygame.init()
 
@@ -252,6 +253,8 @@ class enemyselect(object):
 
 					if event.key == pygame.K_x:
 						display = False
+						self.selection -= 2
+						return False
 						continue
 			enemypos = []	
 			
@@ -296,6 +299,7 @@ class enemyselect(object):
 			clock.tick(60)
 			pygame.display.flip()
 
+		return True
 
 class menuselect(object):
 	def __init__(self, screen, winx, winy, under):
@@ -331,7 +335,8 @@ class menuselect(object):
 						if self.char_y == self.winy / 2 - 35:
 							print "Attack"
 							es = enemyselect(self.screen, self.winx, self.winy, self.b, selection)
-							es.Display()
+							if False == es.Display():
+								selection -= 1
 							
 						if self.char_y == self.winy / 2 :
 							print "Ability"
@@ -368,13 +373,10 @@ class menuselect(object):
 
 				
 
-				self.b.battlequeue = []
 
 			self.screen.fill(BLACK)
 			
-			
-
-			
+		
 			self.b.DisplayParty()	
 			self.b.DisplayEnemy()
 
@@ -392,10 +394,11 @@ class menuselect(object):
 						display = False
 						win = 1
 						break
+				self.b.battlequeue = []
+
 			name_t = self.big.render(self.b.characters[selection].name, 1, WHITE)
 			
 			self.screen.blit(name_t, (self.char1_x - 4, self.winy/2 - 70))
-
 			pygame.draw.rect(self.screen, WHITE, (self.char1_x-4, self.winy/2-35, 170, 180))
 			pygame.draw.rect(self.screen, GREY, (self.char1_x-2, self.winy/2 - 33, 166, 176))
 			pygame.draw.rect(self.screen, WHITE, (self.char1_x-4, self.char_y, 170, 40))
@@ -431,11 +434,11 @@ def battlecalc(screen, winx, winy, character, enemy, direction, action = 0):
 			act2 = "{} lost {} hp!".format(character.name, int(math.floor((3*enemy.stats[0] - character.physdefence) * math.sqrt(enemy.stats[0]/character.stats[2]) * rand)))
 			act_t = small.render(act, 1, WHITE)
 			act2_t = small.render(act2, 1, WHITE)
-			while framecounter < 180:
+			while framecounter < 90:
 				pygame.draw.rect(screen, WHITE, (winx/4 - 35, winy/2+80, 450, 40))
 				pygame.draw.rect(screen, GREY, (winx/4 - 33, winy/2+82, 446, 36))
 
-				if framecounter < 90:
+				if framecounter < 45:
 					screen.blit(act_t, (winx/4 -30, winy/2+85))
 
 				else:
@@ -455,11 +458,11 @@ def battlecalc(screen, winx, winy, character, enemy, direction, action = 0):
 			act2 = "{} lost {} hp!".format(enemy.name, int(math.floor((character.physattk - enemy.stats[2]) * math.floor(math.sqrt(character.stats[0]/enemy.stats[2])) * rand)))
 			act_t = small.render(act, 1, WHITE)
 			act2_t = small.render(act2, 1, WHITE)
-			while framecounter < 180:
+			while framecounter < 90:
 				pygame.draw.rect(screen, WHITE, (winx/4 - 35, winy/2+80, 450, 40))
 				pygame.draw.rect(screen, GREY, (winx/4 -33, winy/2+82, 446, 36))
 
-				if framecounter < 90:
+				if framecounter < 45:
 					screen.blit(act_t, (winx/4 -30, winy/2+85))
 
 				else:

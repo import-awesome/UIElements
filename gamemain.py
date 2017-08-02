@@ -7,6 +7,8 @@ import items
 import gamemap
 import random
 import gamebattle
+import gamemusic
+import maps2
 #import chartemplate
 pygame.init()
 
@@ -29,28 +31,32 @@ if __name__ == "__main__":
 	from chartemplate import Character
 	screen = pygame.display.set_mode((800, 600))
 	borders = gameui.Borders(screen, 800, 600)
-	maze = gamemap.ShowMaze(screen, 525, 450, gamemap.s1_f1)
+	floor = 0
+	maze = gamemap.ShowMaze(screen, 595, 510, maps2.allmaps[floor])
 	clock = pygame.time.Clock()
-	inMaze = True
+	inMaze = False
 	titlescreen = title.Title(screen, 800, 600)
+	music = gamemusic.MusicPlayer()
 	
-	
+	toggle = 1
 	display = True
 	go = False
 	base = [60, 60, 26, 26, [9, 5, 8, 6, 4], ["", "", "", ""], 24, 17]
 	
-	party = [Character(base, 1, "En1"), Character(base, 1, "En2"), Character(base, 1, "En3"), Character(base, 1, "En4"), Character(base, 1, "En5")] 
-	enemy = [Character(base, 1, "Char1"), Character(base, 1, "Char2"), Character(base, 1, "Char3"), Character(base, 1, "Char4"), Character(base, 1, "Char5")] 
+	enemy = [Character(base, 1, "En1"), Character(base, 1, "En2"), Character(base, 1, "En3"), Character(base, 1, "En4"), Character(base, 1, "En5")] 
+	party = [Character(base, 1, "Char1"), Character(base, 1, "Char2"), Character(base, 1, "Char3"), Character(base, 1, "Char4"), Character(base, 1, "Char5")] 
 
 
-
+	music.title()
 	if -1 == titlescreen.Display():
 		display = False
 		pygame.quit()
 
+	music.Stop()
+	battlecheck = random.randint(0, 200)
+
 	stepcount = 0
 	while display:
-		battlecheck = random.randint(0, 200)
 		for event in pygame.event.get():
 			if event.type == pygame.QUIT:
 				display = False
@@ -64,30 +70,60 @@ if __name__ == "__main__":
 						screen.fill(BLACK)
 						continue
 
+					if event.key == pygame.K_z and maze.map[maze.chary][maze.charx] == gamemap.SD:
+						floor+=1
+						maze = gamemap.ShowMaze(screen, 595, 510, maps2.allmaps[floor])
+						continue
+
+					if event.key == pygame.K_z and maze.map[maze.chary][maze.charx] == gamemap.SU:
+						floor-=1
+						maze = gamemap.ShowMaze(screen, 595, 510, maps2.allmaps[floor])
+						continue
+
+					if event.key == pygame.K_x:
+						if toggle == 1:
+							toggle = 0
+
+						else:
+							toggle = 1
+						
+						continue
+
 					if event.key == pygame.K_UP:
 						if maze.map[maze.chary-1][maze.charx] != gamemap.W and maze.map[maze.chary-1][maze.charx] != gamemap.Q:
 							maze.chary = maze.chary - 1
+							stepcount += 1
+
 
 					if event.key == pygame.K_DOWN:
 						if maze.map[maze.chary+1][maze.charx] != gamemap.W and maze.map[maze.chary+1][maze.charx] != gamemap.Q:
 							maze.chary = maze.chary + 1
+							stepcount += 1
+
 
 					if event.key == pygame.K_LEFT:
 						if maze.map[maze.chary][maze.charx-1] != gamemap.W and maze.map[maze.chary][maze.charx-1] != gamemap.Q:
 							maze.charx -= 1
+							stepcount += 1
+
 
 					if event.key == pygame.K_RIGHT:
 						if maze.map[maze.chary][maze.charx+1] != gamemap.W and maze.map[maze.chary][maze.charx+1] != gamemap.Q:
 							maze.charx += 1
+							stepcount += 1
 
-					stepcount += 1
 
-					if (battlecheck * 35) % 20 + stepcount > 18:
+					
+					if (battlecheck * 35) % 80 + stepcount >= 65:
 						stepcount = 0
-						bs = gamebattle.BattleScene(screen, 800, 600, party, enemy)
+						battlecheck = random.randint(0, 200)
 
+						
+						bs = gamebattle.BattleScene(screen, 800, 600, party, enemy)
+						music.battleStart()
 						result = bs.Display() 
-						enemy = [Character(base, 1, "Char1"), Character(base, 1, "Char2"), Character(base, 1, "Char3"), Character(base, 1, "Char4"), Character(base, 1, "Char5")] 
+						
+						music.Stop()
 
 						if result == 0:
 							display = True
@@ -112,7 +148,10 @@ if __name__ == "__main__":
 
 		if inMaze == True:
 			screen.fill(BLACK)
-			maze.fog(maze.charx, maze.chary)
+			if toggle == 1:
+				maze.Display()
+			else:
+				maze.fog(maze.charx, maze.chary)
 			borders.Display()
 
 		else:

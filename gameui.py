@@ -78,7 +78,7 @@ class Borders(object):
 		self.bottom_y = win_y - 80
 
 	def Display(self):
-		pygame.draw.rect(self.screen, GREY, [self.topline_x, self.topline_y, self.line_x, self.line_y])
+		#pygame.draw.rect(self.screen, GREY, [self.topline_x, self.topline_y, self.line_x, self.line_y])
 		pygame.draw.rect(self.screen, GREY, [self.bottom_x, self.bottom_y, self.line_x, self.line_y])
 
 

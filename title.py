@@ -1,6 +1,7 @@
 import pygame
-
+import gamemusic
 pygame.init()
+
 BLACK = (0, 0, 0)
 WHITE = (255, 255, 255)
 GREEN = (0, 255, 0)
@@ -69,6 +70,8 @@ class Title(object):
 			self.screen.blit(self.quit_t, (self.size_x/2 - 110, (self.size_y/2)+80))
 			clock.tick(60)
 			pygame.display.flip()
+
+		
 
 		if go == True:
 			pygame.quit()

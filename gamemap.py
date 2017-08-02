@@ -27,42 +27,10 @@ WLRUD = "W"
 WUDL = "W"
 WUDR = "W"
 WUD = "W"
-SU = "S"
-SD = "S"
+SU = "SU"
+SD = "SD"
 
-s1_f1 = [
-			[Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q],
-			[Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q],
-			[Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q],
-			[Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q],
-			[Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q],			
-			[Q, Q, Q, Q, Q, Q, W, W, W, W, W, Q, W, W, W, Q, W, W, W, Q, W, W, W, W, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q],
-			[Q, Q, Q, Q, Q, W, F, F, F, F, F, W, F, F, F, D, F, F, F, D, F, F, F, F, W, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q],
-			[Q, Q, Q, Q, Q, W, F, F, F, W, F, W, F, W, F, W, W, F, F, W, F, F, W, F, W, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q],
-			[Q, Q, Q, Q, Q, Q, D, W, W, Q, D, W, F, W, F, F, W, F, F, W, W, F, F, F, W, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q], 
-			[Q, Q, Q, Q, Q, W, F, W, F, W, F, F, F, W, F, W, Q, W, F, W, W, W, W, F, W, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q],
-			[Q, Q, Q, Q, Q, W, F, W, F, W, F, W, W, W, F, F, D, F, F, D, F, F, F, F, W, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q],
-			[Q, Q, Q, Q, Q, W, F, W, F, F, F, W, F, W, F, W, Q, W, W, W, F, F, F, F, W, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q],
-			[Q, Q, Q, Q, Q, W, F, W, W, W, W, W, F, W, F, F, W, F, F, W, W, W, E, W, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q],
-			[Q, Q, Q, Q, Q, W, F, F, F, F, W, W, F, W, W, W, W, F, F, D, F, F, F, F, W, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q],
-			[Q, Q, Q, Q, Q, Q, W, W, W, F, W, F, F, D, F, F, F, F, F, W, W, W, W, F, W, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q],
-			[Q, Q, Q, Q, Q, W, F, F, F, F, W, F, W, W, W, W, W, W, SD, W, F, W, W, F, W, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q],
-			[Q, Q, Q, Q, Q, W, F, W, W, F, W, F, W, F, F, F, W, W, W, W, F, F, F, F, W, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q],
-			[Q, Q, Q, Q, Q, W, F, F, F, F, W, F, W, F, F, F, F, F, W, F, F, W, W, E, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q],
-			[Q, Q, Q, Q, Q, W, F, W, W, W, W, F, W, W, E, W, W, F, W, F, W, F, F, F, W, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q],
-			[Q, Q, Q, Q, Q, W, F, F, D, F, W, F, W, F, F, F, W, F, W, F, F, F, W, F, W, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q],
-			[Q, Q, Q, Q, Q, Q, W, W, W, F, W, F, W, W, F, W, W, F, W, W, W, W, W, E, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q],
-			[Q, Q, Q, Q, Q, W, F, F, D, F, W, F, F, W, F, W, F, F, F, F, W, F, F, F, W, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q],
-			[Q, Q, Q, Q, Q, W, F, F, W, F, W, F, F, W, F, W, F, W, W, F, W, F, W, F, W, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q],
-			[Q, Q, Q, Q, Q, W, F, F, W, F, F, F, F, W, B, W, F, F, F, F, D, F, F, F, W, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q],
-			[Q, Q, Q, Q, Q, Q, W, W, Q, W, W, W, W, Q, W, Q, W, W, W, W, Q, W, W, W, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q],
-			[Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q],
-			[Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q],
-			[Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q],
-			[Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q],
-			[Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q]
-		
-		]
+
 
 
 
@@ -103,12 +71,19 @@ class Base(object):
 		pygame.draw.rect(self.screen, RED, (p_x, p_y, x, y))
 
 
-class Stairs(object):
+class StairsUp(object):
 	def __init__(self, screen, p_x, p_y, x, y):
 		self.screen = screen
 		self.x = x
 		self.y = y
 		pygame.draw.rect(self.screen, BLUE, (p_x, p_y, x, y))
+
+class StairsDown(object):
+	def __init__(self, screen, p_x, p_y, x, y):
+		self.screen = screen
+		self.x = x
+		self.y = y
+		pygame.draw.rect(self.screen, GREEN, (p_x, p_y, x, y))
 
 
 class ShowMaze(object):
@@ -130,6 +105,10 @@ class ShowMaze(object):
 			for y in x:
 				if y == B:
 					return [r, c]
+
+				if y == SU:
+					return [r, c]
+
 				r += 1
 			c += 1
 			r = 0
@@ -144,15 +123,19 @@ class ShowMaze(object):
 		self.fogshow(curx, cury, 1)
 		self.fogshow(curx, cury, 2)
 		self.fogshow(curx, cury, 3)
-		pygame.draw.rect(self.screen, BLACK, (math.floor(2 + self.charx * 525 / 35), math.floor(3 + self.chary * 450 / 30), 10, 10))
+		pygame.draw.rect(self.screen, BLACK, (math.floor(2 + self.charx * 595 / 35), math.floor(2 + self.chary * 510 / 30), 13, 13))
 
 		
 		return
 
 	def fogshow(self, curx, cury, dir):
 
-		if self.map[cury][curx] == SD or self.map[cury][curx] == SU:
-			Stairs(self.screen, math.floor(curx * self.winx / 35), math.floor(cury * self.winy / 30), math.floor(self.winx/35), math.floor(self.winy/30))
+		if self.map[cury][curx] == SU:
+			StairsUp(self.screen, math.floor(curx * self.winx / 35), math.floor(cury * self.winy / 30), math.floor(self.winx/35), math.floor(self.winy/30))
+			return
+
+		if self.map[cury][curx] == SD:
+			StairsDown(self.screen, math.floor(curx * self.winx / 35), math.floor(cury * self.winy / 30), math.floor(self.winx/35), math.floor(self.winy/30))
 			return
 
 		if self.map[cury][curx] == E or self.map[cury][curx] == D:
@@ -222,8 +205,11 @@ class ShowMaze(object):
 				if y == B:
 					Base(self.screen, math.floor(r * self.winx / 35), math.floor(c * self.winy / 30), math.floor(self.winx/35), math.floor(self.winy/30))
 				
-				if y == SD or y == SU:
-					Stairs(self.screen, math.floor(r * self.winx / 35), math.floor(c * self.winy / 30), math.floor(self.winx/35), math.floor(self.winy/30))
+				if y == SD:
+					StairsDown(self.screen, math.floor(r * self.winx / 35), math.floor(c * self.winy / 30), math.floor(self.winx/35), math.floor(self.winy/30))
+
+				if y == SU:
+					StairsUp(self.screen, math.floor(r * self.winx / 35), math.floor(c * self.winy / 30), math.floor(self.winx/35), math.floor(self.winy/30))
 
 				if y == F:
 					Floor(self.screen, math.floor(r * self.winx / 35), math.floor(c * self.winy / 30), math.floor(self.winx/35), math.floor(self.winy/30))
@@ -236,7 +222,7 @@ class ShowMaze(object):
 				r += 1
 			c += 1
 			r = 0
-		pygame.draw.rect(self.screen, BLACK, (math.floor(2 + self.charx * 525 / 35), math.floor(3 + self.chary * 450 / 30), 10, 10))
+		pygame.draw.rect(self.screen, BLACK, (math.floor(2 + self.charx * 595 / 35), math.floor(3 + self.chary * 510 / 30), 15, 15))
 
 	def printmap(self):
 		print cols
