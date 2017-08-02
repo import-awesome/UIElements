@@ -33,9 +33,10 @@ class BattleScene(object):
 		while display:
 			result = menu.Display()
 			if result == 0 or result == 1:
-				break
+				return 0
 
-
+			if result == -1:
+				return -1
 
 			for event in pygame.event.get():
 				if event.type == pygame.QUIT:
@@ -135,8 +136,14 @@ class BattleUi(object):
 
 		return True
 
+	def gameOver(self):
+		for x in self.characters:
+			if x.isDead() != True:
+				return False
+		return True
+
 class enemyselect(object):
-	def __init__(self, screen, winx, winy, under, select):
+	def __init__(self, screen, winx, winy, under, select, living):
 		self.screen = screen
 		self.b = under
 		self.winx = winx
@@ -148,6 +155,7 @@ class enemyselect(object):
 		self.char1_x = winx / 16
 		self.char_y = winy /2 - 35
 		self.selection = select
+		self.living = living
 
 	def Display(self):
 
@@ -171,7 +179,7 @@ class enemyselect(object):
 						if self.char1_y == self.winy / 2 - 35 and self.char2_x == self.winx/4+30:
 							print "Attack"
 							#party/enemy, index, 
-							self.b.battlequeue.append([self.b.characters[self.selection], enemypos[0], 2])
+							self.b.battlequeue.append([self.living[self.selection], enemypos[0], 2])
 							#self.b.battlequeue.append(battlecalc(self.b.character[self.selection], enemypos[0]))
 							print enemypos[0].name
 							display = False
@@ -179,7 +187,7 @@ class enemyselect(object):
 						if self.char1_y == self.winy / 2 - 35 and self.char2_x == self.winx/4+230:
 							print "Attack"
 							#party/enemy, index, 
-							self.b.battlequeue.append([self.b.characters[self.selection], enemypos[1], 2])
+							self.b.battlequeue.append([self.living[self.selection], enemypos[1], 2])
 							#self.b.battlequeue.append(battlecalc(self.b.character[self.selection], enemypos[0]))
 							print enemypos[1].name
 							display = False
@@ -187,7 +195,7 @@ class enemyselect(object):
 						if self.char1_y == self.winy / 2 and self.char2_x == self.winx/4+30:
 							print "Attack"
 							#party/enemy, index, 
-							self.b.battlequeue.append([self.b.characters[self.selection], enemypos[2], 2])
+							self.b.battlequeue.append([self.living[self.selection], enemypos[2], 2])
 							#self.b.battlequeue.append(battlecalc(self.b.character[self.selection], enemypos[0]))
 							print enemypos[2].name
 							display = False
@@ -195,7 +203,7 @@ class enemyselect(object):
 						if self.char1_y == self.winy / 2 and self.char2_x == self.winx/4+230:
 							print "Attack"
 							#party/enemy, index, 
-							self.b.battlequeue.append([self.b.characters[self.selection], enemypos[3], 2])
+							self.b.battlequeue.append([self.living[self.selection], enemypos[3], 2])
 							#self.b.battlequeue.append(battlecalc(self.b.character[self.selection], enemypos[0]))
 							print enemypos[3].name
 							display = False
@@ -203,7 +211,7 @@ class enemyselect(object):
 						if self.char1_y == self.winy / 2 + 35 and self.char2_x == self.winx/4+30:
 							print "Attack"
 							#party/enemy, index, 
-							self.b.battlequeue.append([self.b.characters[self.selection], enemypos[4], 2])
+							self.b.battlequeue.append([self.living[self.selection], enemypos[4], 2])
 							#self.b.battlequeue.append(battlecalc(self.b.character[self.selection], enemypos[0]))
 							print enemypos[4].name
 							display = False
@@ -260,7 +268,7 @@ class enemyselect(object):
 			
 		
 			self.screen.fill(BLACK)
-			name_t = self.big.render(self.b.characters[self.selection].name, 1, WHITE)
+			name_t = self.big.render(self.living[self.selection].name, 1, WHITE)
 			
 			self.screen.blit(name_t, (self.char1_x - 4, self.winy/2 - 70))
 
@@ -317,10 +325,14 @@ class menuselect(object):
 		go = False
 		run = False
 		display = True
-		#queue = []
+		living = []
+		for x in self.b.characters:
+			if x.isDead() == True:
+				continue
+			living.append(x)
 		win = 0
-		es = enemyselect(self.screen, self.winx, self.winy, self.b, 0)
-		while selection < len(self.b.characters) and display == True:
+		es = enemyselect(self.screen, self.winx, self.winy, self.b, 0, living)
+		while display == True:
 
 			self.screen.fill(BLACK)
 
@@ -334,9 +346,12 @@ class menuselect(object):
 					if event.key == pygame.K_z:
 						if self.char_y == self.winy / 2 - 35:
 							print "Attack"
-							es = enemyselect(self.screen, self.winx, self.winy, self.b, selection)
+							es = enemyselect(self.screen, self.winx, self.winy, self.b, selection, living)
 							if False == es.Display():
 								selection -= 1
+
+							else:
+								selection += 1
 							
 						if self.char_y == self.winy / 2 :
 							print "Ability"
@@ -353,7 +368,6 @@ class menuselect(object):
 							display = False
 							return 0
 						self.char_y = self.winy /2 - 35
-						selection += 1
 
 					if event.key == pygame.K_x:
 						if selection > 0:
@@ -368,11 +382,6 @@ class menuselect(object):
 					if event.key == pygame.K_DOWN:
 						if self.char_y != self.winy / 2 + 105:
 							self.char_y += 35
-			
-			
-
-				
-
 
 			self.screen.fill(BLACK)
 			
@@ -380,13 +389,15 @@ class menuselect(object):
 			self.b.DisplayParty()	
 			self.b.DisplayEnemy()
 
-			if selection >= 5:
-				selection = 0
+			if selection >= len(living):
 				self.b.turn += 1
 				for x in self.b.enemies:
-					self.b.battlequeue.append([self.b.characters[random.randint(0, 1000) % 5], x, 1])
+					if x.isDead() == True:
+						continue
+					self.b.battlequeue.append([living[random.randint(0, 1000) % len(living)], x, 1])
 				for x in self.b.battlequeue:
 					battlecalc(self.screen, self.winx, self.winy, x[0], x[1], x[2])
+					self.screen.fill(BLACK)
 					self.b.DisplayParty()
 					self.b.DisplayEnemy()
 
@@ -394,9 +405,21 @@ class menuselect(object):
 						display = False
 						win = 1
 						break
+
+					if self.b.gameOver() == True:
+						win = -1
+						display = False
+						break
+					living = []
+					for x in self.b.characters:
+						if x.isDead():
+							continue
+						living.append(x)
+
+				selection = 0
 				self.b.battlequeue = []
 
-			name_t = self.big.render(self.b.characters[selection].name, 1, WHITE)
+			name_t = self.big.render(living[selection].name, 1, WHITE)
 			
 			self.screen.blit(name_t, (self.char1_x - 4, self.winy/2 - 70))
 			pygame.draw.rect(self.screen, WHITE, (self.char1_x-4, self.winy/2-35, 170, 180))
@@ -409,6 +432,9 @@ class menuselect(object):
 
 			clock.tick(60)
 			pygame.display.flip()
+
+		if win == -1:
+			return -1
 
 		if win == 1:
 			return 1
@@ -432,8 +458,22 @@ def battlecalc(screen, winx, winy, character, enemy, direction, action = 0):
 		if action == 0:
 			act = "{} is attacked by {}!".format(character.name, enemy.name)
 			act2 = "{} lost {} hp!".format(character.name, int(math.floor((3*enemy.stats[0] - character.physdefence) * math.sqrt(enemy.stats[0]/character.stats[2]) * rand)))
+			act3 = "{} dies!".format(character.name)
+			if character.hp <= 0:
+				act = "{} is already dead.".format(character.hp)
+				act_t = small.render(act, 1, WHITE)
+				while framecounter < 45:
+					screen.blit(act_t, (winx/4 -30, winy/2+85))
+					framcounter += 1
+
+					clock.tick(60)
+					pygame.display.flip()
+				return
+
+
 			act_t = small.render(act, 1, WHITE)
 			act2_t = small.render(act2, 1, WHITE)
+			act3_t = small.render(act3, 1, WHITE)
 			while framecounter < 90:
 				pygame.draw.rect(screen, WHITE, (winx/4 - 35, winy/2+80, 450, 40))
 				pygame.draw.rect(screen, GREY, (winx/4 - 33, winy/2+82, 446, 36))
@@ -442,7 +482,10 @@ def battlecalc(screen, winx, winy, character, enemy, direction, action = 0):
 					screen.blit(act_t, (winx/4 -30, winy/2+85))
 
 				else:
-					screen.blit(act2_t, (winx/4 - 30, winy/2+85))
+					if character.hp - int(math.floor((3*enemy.stats[0] - character.physdefence) * math.sqrt(enemy.stats[0]/character.stats[2]) * rand)) <= 0:
+						screen.blit(act3_t, (winx/4 - 30, winy/2+85))
+					else:	
+						screen.blit(act2_t, (winx/4 - 30, winy/2+85))
 
 
 				framecounter += 1
@@ -456,8 +499,10 @@ def battlecalc(screen, winx, winy, character, enemy, direction, action = 0):
 			print character.name, "attacks", enemy.name
 			act = "{} attacks {}!".format(character.name, enemy.name)
 			act2 = "{} lost {} hp!".format(enemy.name, int(math.floor((character.physattk - enemy.stats[2]) * math.floor(math.sqrt(character.stats[0]/enemy.stats[2])) * rand)))
+			act3 = "{} dies!".format(enemy.name)
 			act_t = small.render(act, 1, WHITE)
 			act2_t = small.render(act2, 1, WHITE)
+			act3_t = small.render(act3, 1, WHITE)
 			while framecounter < 90:
 				pygame.draw.rect(screen, WHITE, (winx/4 - 35, winy/2+80, 450, 40))
 				pygame.draw.rect(screen, GREY, (winx/4 -33, winy/2+82, 446, 36))
@@ -466,7 +511,10 @@ def battlecalc(screen, winx, winy, character, enemy, direction, action = 0):
 					screen.blit(act_t, (winx/4 -30, winy/2+85))
 
 				else:
-					screen.blit(act2_t, (winx/4 - 30, winy/2+85))
+					if enemy.hp - int(math.floor((character.physattk - enemy.stats[2]) * math.floor(math.sqrt(character.stats[0]/enemy.stats[2])) * rand)) <= 0:
+						screen.blit(act3_t, (winx/4 - 30, winy/2+85))
+					else:
+						screen.blit(act2_t, (winx/4 - 30, winy/2+85))
 
 
 				framecounter += 1
