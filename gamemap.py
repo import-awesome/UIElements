@@ -222,7 +222,7 @@ class ShowMaze(object):
 				r += 1
 			c += 1
 			r = 0
-		pygame.draw.rect(self.screen, BLACK, (math.floor(2 + self.charx * 595 / 35), math.floor(3 + self.chary * 510 / 30), 15, 15))
+		pygame.draw.rect(self.screen, BLACK, (math.floor(2 + self.charx * 595 / 35), math.floor(2 + self.chary * 510 / 30), 13, 13))
 
 	def printmap(self):
 		print cols
