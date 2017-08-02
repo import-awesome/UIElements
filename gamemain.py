@@ -116,6 +116,22 @@ if __name__ == "__main__":
 					
 					if (battlecheck * 35) % 80 + stepcount >= 65 and toggle == 0:
 						stepcount = 0
+
+						if battlecheck <= 79:
+							enemy = [Character(base, 1, "En1"), Character(base, 1, "En2")] 
+
+						if battlecheck <= 159 and battlecheck >= 80 :
+							enemy = [Character(base, 1, "En1"), Character(base, 1, "En2"), Character(base, 1, "En3")] 
+
+						if battlecheck >= 160 and battlecheck <= 174:
+							enemy = [Character(base, 1, "En1"), Character(base, 1, "En2"), Character(base, 1, "En3"), Character(base, 1, "En4")] 
+
+						if battlecheck >= 175 and battlecheck <= 189:
+							enemy = [Character(base, 1, "En1"), Character(base, 1, "En2"), Character(base, 1, "En3"), Character(base, 1, "En4"), Character(base, 1, "En5")] 
+
+						if battlecheck >= 190:
+							enemy = [Character(base, 1, "En1"), Character(base, 1, "En2")] 
+							
 						battlecheck = random.randint(0, 200)
 
 						
