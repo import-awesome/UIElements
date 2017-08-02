@@ -54,7 +54,7 @@ class Turn(object):
 	def __init__(self, screen, win_x, win_y, turn):
 		self.screen = screen
 		self.pos_x = win_x/16
-		self.pos_y = 20
+		self.pos_y = win_y / 4
 		self.big = pygame.font.Font(None, 72)
 		self.small = pygame.font.Font(None, 36)
 		self.turn = turn

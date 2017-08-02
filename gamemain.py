@@ -39,8 +39,8 @@ if __name__ == "__main__":
 	go = False
 	base = [60, 60, 26, 26, [9, 5, 8, 6, 4], ["", "", "", ""], 24, 17]
 	
-	party = [Character(base, 1, "Test1"), Character(base, 1, "Test2"), Character(base, 1, "Test3"), Character(base, 1, "Test4"), Character(base, 1, "Test5")] 
-	enemy = [Character(base, 1, "Test1"), Character(base, 1, "Test2")] 
+	party = [Character(base, 1, "En1"), Character(base, 1, "En2"), Character(base, 1, "En3"), Character(base, 1, "En4"), Character(base, 1, "En5")] 
+	enemy = [Character(base, 1, "Char1"), Character(base, 1, "Char2"), Character(base, 1, "Char3"), Character(base, 1, "Char4"), Character(base, 1, "Char5")] 
 
 
 
@@ -86,8 +86,8 @@ if __name__ == "__main__":
 						stepcount = 0
 						bs = gamebattle.BattleScene(screen, 800, 600, party, enemy)
 
-						result = bs.Display()
-						enemy = [Character(base, 1, "Test1")] 
+						result = bs.Display() 
+						enemy = [Character(base, 1, "Char1"), Character(base, 1, "Char2"), Character(base, 1, "Char3"), Character(base, 1, "Char4"), Character(base, 1, "Char5")] 
 
 						if result == 0:
 							display = True
