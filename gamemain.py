@@ -72,12 +72,12 @@ if __name__ == "__main__":
 
 					if event.key == pygame.K_z and maze.map[maze.chary][maze.charx] == gamemap.SD:
 						floor+=1
-						maze = gamemap.ShowMaze(screen, 595, 510, maps2.allmaps[floor])
+						maze = gamemap.ShowMaze(screen, 595, 510, maps2.allmaps[floor], gamemap.SU)
 						continue
 
 					if event.key == pygame.K_z and maze.map[maze.chary][maze.charx] == gamemap.SU:
 						floor-=1
-						maze = gamemap.ShowMaze(screen, 595, 510, maps2.allmaps[floor])
+						maze = gamemap.ShowMaze(screen, 595, 510, maps2.allmaps[floor], gamemap.SD)
 						continue
 
 					if event.key == pygame.K_x:
@@ -114,7 +114,7 @@ if __name__ == "__main__":
 
 
 					
-					if (battlecheck * 35) % 80 + stepcount >= 65:
+					if (battlecheck * 35) % 80 + stepcount >= 65 and toggle == 0:
 						stepcount = 0
 						battlecheck = random.randint(0, 200)
 

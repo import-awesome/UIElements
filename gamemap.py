@@ -87,11 +87,12 @@ class StairsDown(object):
 
 
 class ShowMaze(object):
-	def __init__(self, screen, win_x, win_y, maps):
+	def __init__(self, screen, win_x, win_y, maps, start = B):
 		self.screen = screen
 		self.winx = win_x
 		self.winy = win_y
 		self.map = maps
+		self.start = start
 		self.clear = False
 		self.start = self.find(B)
 		self.charx = self.start[0]
@@ -100,14 +101,14 @@ class ShowMaze(object):
 	def find(self, q):
 		c = 0
 		r = 0
-		print q
+		#print q
 		for x in self.map:
 			for y in x:
-				if y == B:
+				if y == self.start:
 					return [r, c]
 
-				if y == SU:
-					return [r, c]
+				#if y == SU:
+				#	return [r, c]
 
 				r += 1
 			c += 1
