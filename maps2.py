@@ -28,7 +28,7 @@ SD = "SD"
 
 
 s1_f1 = [
-			[F, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, F],
+			[Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q],
 			[Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q],
 			[Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q],
 			[Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q],
@@ -57,7 +57,7 @@ s1_f1 = [
 			[Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q],
 			[Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q],
 			[Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q],
-			[Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, F, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q]
+			[Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q]
 		
 		]
 
@@ -76,7 +76,7 @@ s1_f2 = [
 [Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, W, F, W, F, F, F, W, F, F, F, F, F, W, F, W, F, Q, Q, F, W, Q, Q, Q, Q, Q],
 [Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, W, F, F, F, Q, F, F, F, F, W, F, F, W, F, W, F, Q, Q, F, W, Q, Q, Q, Q, Q],
 [Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, W, F, W, F, Q, F, W, W, W, W, W, F, W, F, F, F, Q, Q, F, W, Q, Q, Q, Q, Q],
-[Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, W, F, W, F, Q, F, W, F, F, F, D, W, W, W, W, D, W, W, D, W, Q, Q, Q, Q, Q],
+[Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, W, F, W, F, Q, F, W, F, F, F, W, W, W, W, W, D, W, W, D, W, Q, Q, Q, Q, Q],
 [Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, W, F, W, F, F, F, W, F, F, F, F, F, F, F, W, F, F, F, F, W, Q, Q, Q, Q, Q],
 [Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, W, F, W, W, W, F, W, F, W, W, F, W, W, F, W, F, Q, Q, F, W, Q, Q, Q, Q, Q],
 [Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, W, F, F, F, F, F, W, F, F, W, F, W, F, F, W, F, Q, Q, F, W, Q, Q, Q, Q, Q],
