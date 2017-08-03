@@ -42,6 +42,7 @@ class Town(object):
 		display = True
 		option = 0
 		townselecty = int((self.winy*9)/20)
+		towninn = Inn(self.screen, self.winx, self.winy)
 		while display:
 			for event in pygame.event.get():
 
@@ -51,10 +52,13 @@ class Town(object):
 					continue
 
 				if event.type == pygame.KEYDOWN:
+					if event.key == pygame.K_x:
+						townselecty = int((self.winy*9)/20) + 200
+
 					if event.key == pygame.K_z:
 						if townselecty == int((self.winy*9)/20):
 							print "Inn"
-
+							towninn.Display()
 						if townselecty == int((self.winy*9)/20) + 50:
 							print "Shop"
 						if townselecty == int((self.winy*9)/20) + 100:
@@ -109,6 +113,90 @@ class Town(object):
 
 							self.screen.fill(BLACK)
 							continue
+
+					if event.key == pygame.K_UP:
+						if townselecty != int((self.winy*9)/20):
+							townselecty -= 50
+
+					if event.key == pygame.K_DOWN:
+						if townselecty != int((self.winy*9)/20) + 200:
+							townselecty += 50
+
+
+
+
+			self.screen.fill(BLACK)
+			self.screen.blit(self.townimage, self.towndisp)
+			pygame.draw.rect(self.screen, WHITE, (38, 268, 254, 254))
+			pygame.draw.rect(self.screen, GREY, (40, 270, 250, 250))
+			pygame.draw.rect(self.screen, TOWNBLUE, (38, townselecty-2, 254, 54))
+			pygame.draw.rect(self.screen, GREY, (40, townselecty, 250, 50))
+
+			self.screen.blit(inn_t, (42, 275))
+			self.screen.blit(shop_t, (42, 325))
+			self.screen.blit(bar_t, (42, 375))
+			self.screen.blit(enter_t, (42, 475))
+
+
+
+			clock.tick(60)
+			pygame.display.flip()
+
+		return option
+
+class Inn(object):
+	def __init__(self, screen, winx, winy):
+		self.screen = screen
+		self.winx = winx
+		self.winy = winy
+		#self.party = party
+		#self.inventory = inventory
+		self.townimage = pygame.image.load("etria.jpg")
+		self.towndisp = self.townimage.get_rect()
+		self.big = pygame.font.Font(None, 72)
+		self.small = pygame.font.Font(None, 48)
+		
+
+	def Display(self):
+		inn = "Sleep"
+		shop = "Save"
+		bar = "Item Storage"
+		entermaze = "Back to Town"
+		inn_t = self.small.render(inn, 1, TOWNBLUE)
+		shop_t = self.small.render(shop, 1, TOWNBLUE)
+		bar_t = self.small.render(bar, 1, TOWNBLUE)
+		enter_t = self.small.render(entermaze, 1, TOWNBLUE)
+		display = True
+		option = 0
+		townselecty = int((self.winy*9)/20)
+		while display:
+			for event in pygame.event.get():
+
+				if event.type == pygame.QUIT:
+					option = 0
+					display = False
+					continue
+
+				if event.type == pygame.KEYDOWN:
+					if event.key == pygame.K_x:
+						townselecty = int((self.winy*9)/20) + 200
+
+					if event.key == pygame.K_z:
+						if townselecty == int((self.winy*9)/20):
+							print "Inn"
+
+						if townselecty == int((self.winy*9)/20) + 50:
+							print "Shop"
+						if townselecty == int((self.winy*9)/20) + 100:
+							print "Bar"
+						if townselecty == int((self.winy*9)/20) + 150:
+							print "Guild"
+
+						if townselecty == int((self.winy*9)/20) + 200:
+							print "Back"
+							display = False
+							continue
+							
 
 					if event.key == pygame.K_UP:
 						if townselecty != int((self.winy*9)/20):

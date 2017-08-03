@@ -35,7 +35,7 @@ if __name__ == "__main__":
 	borders = gameui.Borders(screen, 800, 600)
 	strat = 0
 	floor = 0
-	maze = gamemap.ShowMaze(screen, 595, 510, maps2.allmaps[strat][floor])
+	maze = gamemap.ShowMaze(screen, 595, 510, maps2.allmaps[strat][floor][0])
 	clock = pygame.time.Clock()
 	inMaze = False
 	titlescreen = title.Title(screen, 800, 600)
@@ -120,21 +120,22 @@ if __name__ == "__main__":
 						continue
 
 					if event.key == pygame.K_z and maze.map[maze.chary][maze.charx] == gamemap.SD:
+						maps2.allmaps[strat][floor][1] = 1
 						floor+=1
-						maze = gamemap.ShowMaze(screen, 595, 510, maps2.allmaps[strat][floor], gamemap.SU)
+						maze = gamemap.ShowMaze(screen, 595, 510, maps2.allmaps[strat][floor][0], gamemap.SU)
 						continue
 
 					if event.key == pygame.K_z and maze.map[maze.chary][maze.charx] == gamemap.SU:
 						floor-=1
-						maze = gamemap.ShowMaze(screen, 595, 510, maps2.allmaps[strat][floor], gamemap.SD)
+						maze = gamemap.ShowMaze(screen, 595, 510, maps2.allmaps[strat][floor][0], gamemap.SD)
 						continue
 
-					if event.key == pygame.K_x:
-						if toggle == 1:
-							toggle = 0
+					if event.key == pygame.K_t:
+						if maps2.allmaps[strat][floor][1] == 1:
+							maps2.allmaps[strat][floor][1] = 0
 
 						else:
-							toggle = 1
+							maps2.allmaps[strat][floor][1] = 1
 						
 						continue
 
@@ -201,7 +202,7 @@ if __name__ == "__main__":
 
 		if inMaze == True:
 			screen.fill(BLACK)
-			if toggle == 1:
+			if maps2.allmaps[strat][floor][1] == 1:
 				maze.Display()
 			else:
 				maze.fog(maze.charx, maze.chary)
