@@ -363,7 +363,10 @@ class menuselect(object):
 							self.b.enemies[0].hp -= 10
 						if self.char_y == self.winy / 2 + 70:
 							print "Defend"
-							self.b.enemies[0].hp -= 10
+							#living[selection].physdefence += 10
+							living[selection].hp += 10
+							self.b.battlequeue.append([living[selection], None, 0])
+							selecion += 1
 						if self.char_y == self.winy / 2 + 105:
 							print "Run"
 							run = True
@@ -373,6 +376,9 @@ class menuselect(object):
 
 					if event.key == pygame.K_x:
 						if selection > 0:
+							if self.b.battlequeue[selection-1]:
+								living[selection-1].hp -= 10
+								#living[selection-1].physdefence -= 10
 							selection -= 1
 							self.b.battlequeue.pop()
 							print self.b.battlequeue
