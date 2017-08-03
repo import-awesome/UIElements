@@ -1,0 +1,141 @@
+import pygame
+pygame.init()
+
+
+
+
+
+BLACK = (0, 0, 0)
+WHITE = (255, 255, 255)
+GREEN = (0, 255, 0)
+GREY = (30, 30, 30)
+RED = (255, 0, 0)
+SAPH = (15, 82, 186)
+TOWNBLUE = (0, 142, 204)
+GOLD = (255, 255, 0)
+clock = pygame.time.Clock()
+
+
+
+class Town(object):
+	def __init__(self, screen, winx, winy):
+		self.screen = screen
+		self.winx = winx
+		self.winy = winy
+		#self.party = party
+		#self.inventory = inventory
+		self.townimage = pygame.image.load("etria.jpg")
+		self.towndisp = self.townimage.get_rect()
+		self.big = pygame.font.Font(None, 72)
+		self.small = pygame.font.Font(None, 48)
+		
+
+	def Display(self):
+		inn = "Etrian Inn"
+		shop = "Mike's Merch"
+		bar = "Drunken Duck"
+		entermaze = "Enter Maze"
+		inn_t = self.small.render(inn, 1, TOWNBLUE)
+		shop_t = self.small.render(shop, 1, TOWNBLUE)
+		bar_t = self.small.render(bar, 1, TOWNBLUE)
+		enter_t = self.small.render(entermaze, 1, TOWNBLUE)
+		display = True
+		option = 0
+		townselecty = int((self.winy*9)/20)
+		while display:
+			for event in pygame.event.get():
+
+				if event.type == pygame.QUIT:
+					option = 0
+					display = False
+					continue
+
+				if event.type == pygame.KEYDOWN:
+					if event.key == pygame.K_z:
+						if townselecty == int((self.winy*9)/20):
+							print "Inn"
+
+						if townselecty == int((self.winy*9)/20) + 50:
+							print "Shop"
+						if townselecty == int((self.winy*9)/20) + 100:
+							print "Bar"
+						if townselecty == int((self.winy*9)/20) + 150:
+							print "Guild"
+
+						if townselecty == int((self.winy*9)/20) + 200:
+
+							small = pygame.font.Font(None, 26)
+							yes = "Yes"
+							no = "No"
+							selectorx = 300
+							selectory = 300
+
+							yesno = "Do you want to go to the Maze?"
+							yesno_t = small.render(yesno, 1, WHITE)
+							yes_t = small.render(yes, 1, WHITE)
+							no_t = small.render(no, 1, WHITE)
+							check = True
+							while check:
+
+								for event2 in pygame.event.get():
+									if event2.type == pygame.KEYDOWN:
+										if event2.key == pygame.K_z:
+											check = False
+											if selectorx == 300:
+												option = 1
+												display = False
+										if event2.key == pygame.K_LEFT:
+											if selectorx != 300:
+												selectorx -= 120
+
+										if event2.key == pygame.K_RIGHT:
+											if selectorx != 420:
+												selectorx += 120
+
+
+								pygame.draw.rect(self.screen, GREEN, (248, 248, 304, 104))
+								pygame.draw.rect(self.screen, GREY, (250, 250, 300, 100))
+								pygame.draw.rect(self.screen, WHITE, (300, 300, 70, 35))
+								pygame.draw.rect(self.screen, WHITE, (420, 300, 70, 35))
+								pygame.draw.rect(self.screen, GREEN, (selectorx, selectory, 70, 35))
+								pygame.draw.rect(self.screen, GREY, (302, 302, 66, 31))
+								pygame.draw.rect(self.screen, GREY, (422, 302, 66, 31))
+
+								self.screen.blit(yesno_t, (260, 270))
+								self.screen.blit(yes_t, (317, 308))
+								self.screen.blit(no_t, (442, 308))
+								clock.tick(60)
+								pygame.display.flip()
+
+							self.screen.fill(BLACK)
+							continue
+
+					if event.key == pygame.K_UP:
+						if townselecty != int((self.winy*9)/20):
+							townselecty -= 50
+
+					if event.key == pygame.K_DOWN:
+						if townselecty != int((self.winy*9)/20) + 200:
+							townselecty += 50
+
+
+
+
+			self.screen.fill(BLACK)
+			self.screen.blit(self.townimage, self.towndisp)
+			pygame.draw.rect(self.screen, WHITE, (38, 268, 254, 254))
+			pygame.draw.rect(self.screen, GREY, (40, 270, 250, 250))
+			pygame.draw.rect(self.screen, TOWNBLUE, (38, townselecty-2, 254, 54))
+			pygame.draw.rect(self.screen, GREY, (40, townselecty, 250, 50))
+
+			self.screen.blit(inn_t, (42, 275))
+			self.screen.blit(shop_t, (42, 325))
+			self.screen.blit(bar_t, (42, 375))
+			self.screen.blit(enter_t, (42, 475))
+
+
+
+			clock.tick(60)
+			pygame.display.flip()
+
+		return option
