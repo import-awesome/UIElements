@@ -40,7 +40,8 @@ if __name__ == "__main__":
 	inMaze = False
 	titlescreen = title.Title(screen, 800, 600)
 	music = gamemusic.MusicPlayer()
-	
+	#index 0 is gold, index 1 is inventory, max 20 items
+	inventory = [0, []]
 	toggle = 1
 	display = True
 	go = False
