@@ -272,7 +272,7 @@ class Bar(object):
 	def Display(self):
 		inn = "Talk"
 		shop = "Drink"
-		bar = "Food"
+		bar = "Eat"
 		talk = "Drink More"
 		entermaze = "Back to Town"
 		inn_t = self.small.render(inn, 1, TOWNBLUE)
@@ -282,6 +282,9 @@ class Bar(object):
 		enter_t = self.small.render(entermaze, 1, TOWNBLUE)
 		display = True
 		option = 0
+		eat_f = 0
+		drink_f = 0
+		drinkm_f = 0
 		townselecty = int((self.winy*9)/20)
 		while display:
 			for event in pygame.event.get():
@@ -297,29 +300,24 @@ class Bar(object):
 
 					if event.key == pygame.K_z:
 						if townselecty == int((self.winy*9)/20):
-							print "Inn"		
-							small = pygame.font.Font(None, 26)
-
-							framecount = 0
-							for x in self.party:
-								x.hp = x.mhp
-								rest = "Party Memebers revived, hp and mp refilled."
-								rest_t = small.render(rest, 1, WHITE)
-								while framecount < 120:
-									pygame.draw.rect(self.screen, WHITE, (198, 208, 454, 54))
-									pygame.draw.rect(self.screen, GREY, (200, 210, 450, 50))
-									self.screen.blit(rest_t, (242, 225))
-									clock.tick(60)
-									framecount += 1
-									pygame.display.flip()
-
+							print ""		
 
 						if townselecty == int((self.winy*9)/20) + 50:
-							print "Shop"
+							if eat_f != 1:
+								eat_f = 1
+								for x in self.party:
+									x.mhp += 15
+
 						if townselecty == int((self.winy*9)/20) + 100:
-							print "Bar"
+							if drink_f != 1:
+								drink_f = 1
+								for x in self.party:
+									x.mmp += 10
 						if townselecty == int((self.winy*9)/20) + 150:
-							print "Guild"
+							if drink_f != 1:
+								drinkm_f = 1
+								for x in self.party:
+									x.mmp += 10
 
 						if townselecty == int((self.winy*9)/20) + 200:
 							print "Back"
@@ -346,8 +344,8 @@ class Bar(object):
 			pygame.draw.rect(self.screen, GREY, (40, townselecty, 250, 50))
 
 			self.screen.blit(inn_t, (42, 275))
-			self.screen.blit(shop_t, (42, 325))
-			self.screen.blit(bar_t, (42, 375))
+			self.screen.blit(shop_t, (42, 375))
+			self.screen.blit(bar_t, (42, 325))
 			self.screen.blit(talk_t, (42, 425))
 			self.screen.blit(enter_t, (42, 475))
 
@@ -401,21 +399,6 @@ class Shop(object):
 					if event.key == pygame.K_z:
 						if townselecty == int((self.winy*9)/20):
 							print "Inn"		
-							small = pygame.font.Font(None, 26)
-
-							framecount = 0
-							for x in self.party:
-								x.hp = x.mhp
-								rest = "Party Memebers revived, hp and mp refilled."
-								rest_t = small.render(rest, 1, WHITE)
-								while framecount < 120:
-									pygame.draw.rect(self.screen, WHITE, (198, 208, 454, 54))
-									pygame.draw.rect(self.screen, GREY, (200, 210, 450, 50))
-									self.screen.blit(rest_t, (242, 225))
-									clock.tick(60)
-									framecount += 1
-									pygame.display.flip()
-
 
 						if townselecty == int((self.winy*9)/20) + 50:
 							print "Shop"
