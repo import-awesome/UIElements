@@ -174,23 +174,23 @@ if __name__ == "__main__":
 
 
 					
-					if (battlecheck * 35) % 80 + stepcount >= 65 and toggle == 2:
+					if (battlecheck * 35) % 80 + stepcount >= 65: #and toggle == 2:
 						stepcount = 0
 
 						if battlecheck <= 79:
-							enemy = [Character(base, 1, "En1"), Character(base, 1, "En2")] 
+							enemy = [Character(base, 1, "Enemy1"), Character(base, 1, "Enemy2")] 
 
 						if battlecheck <= 159 and battlecheck >= 80 :
-							enemy = [Character(base, 1, "En1"), Character(base, 1, "En2"), Character(base, 1, "En3")] 
+							enemy = [Character(base, 1, "Enemy1"), Character(base, 1, "Enemy2"), Character(base, 1, "Enemy3")] 
 
 						if battlecheck >= 160 and battlecheck <= 174:
-							enemy = [Character(base, 1, "En1"), Character(base, 1, "En2"), Character(base, 1, "En3"), Character(base, 1, "En4")] 
+							enemy = [Character(base, 1, "Enemy1"), Character(base, 1, "Enemy2"), Character(base, 1, "Enemy3"), Character(base, 1, "Enemy4")] 
 
 						if battlecheck >= 175 and battlecheck <= 189:
-							enemy = [Character(base, 1, "En1"), Character(base, 1, "En2"), Character(base, 1, "En3"), Character(base, 1, "En4"), Character(base, 1, "En5")] 
+							enemy = [Character(base, 1, "Enemy1"), Character(base, 1, "Enemy2"), Character(base, 1, "Enemy3"), Character(base, 1, "Enemy4"), Character(base, 1, "Enemy5")] 
 
 						if battlecheck >= 190:
-							enemy = [Character(base, 1, "En1")] 
+							enemy = [Character(base, 1, "Enemy1")] 
 							
 						battlecheck = random.randint(0, 200)
 
@@ -238,7 +238,6 @@ if __name__ == "__main__":
 			music.Stop2()
 			music.mazeStart()
 			
-			#music.mazeStart()
 		clock.tick(60)
 		pygame.display.flip()
 
