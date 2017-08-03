@@ -95,6 +95,38 @@ s1_f2 = [
 [Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, W, F, W, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q],
 [Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q] ]
 
+s1_f3 = [
+[Q, Q, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, Q, Q],
+[Q, Q, W, F, W, F, F, F, F, F, F, F, F, F, F, F, F, F, F, F, F, F, F, F, F, F, F, F, F, F, W, F, W, Q, Q],
+[Q, W, W, F, W, F, W, F, W, F, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, F, W, F, W, F, W, F, W, Q, Q],
+[W, F, W, F, F, F, W, F, W, F, W, F, F, F, F, F, F, F, F, F, F, F, F, F, W, F, W, F, W, F, F, F, W, F, W],
+[W, F, F, F, W, F, W, F, W, F, W, F, F, F, W, W, W, W, W, W, W, F, F, F, W, F, W, F, W, F, W, F, F, F, W],
+[W, W, F, W, W, W, W, F, W, F, W, F, F, F, W, F, F, F, F, F, W, F, F, F, W, F, W, F, W, W, W, W, W, W, W],
+[W, F, F, F, F, F, W, F, W, F, W, F, F, F, W, F, W, SD, W, F, W, F, F, F, W, F, W, F, W, F, F, F, F, F, W],
+[W, F, F, W, F, W, W, F, W, F, W, F, F, F, W, F, W, F, W, F, W, F, F, F, W, F, W, F, W, W, F, W, F, F, W],
+[W, F, F, W, F, F, W, F, W, F, W, F, F, F, W, F, F, F, F, F, W, F, F, F, W, F, W, F, W, F, F, W, F, F, W],
+[W, F, F, W, F, F, W, F, W, F, W, F, F, F, F, F, F, F, F, F, F, F, F, F, W, F, W, F, W, F, F, W, F, F, W],
+[W, F, F, W, F, F, W, F, W, W, W, W, W, W, W, W, W, D, W, W, W, W, W, W, W, W, W, F, W, F, F, W, F, F, W],
+[W, F, F, W, F, F, W, F, F, F, F, F, F, F, W, F, F, F, F, F, W, F, F, F, F, F, F, F, W, F, F, W, F, F, W],
+[W, F, W, W, W, W, W, W, W, W, W, W, F, W, W, F, F, F, F, F, W, W, F, W, W, W, W, W, W, F, F, W, W, F, W],
+[W, F, W, F, F, F, W, F, F, F, F, F, F, F, W, F, F, F, F, F, W, F, F, F, F, F, F, F, F, F, F, F, W, F, W],
+[W, F, W, W, W, W, W, W, W, W, W, W, W, W, W, F, F, F, F, F, W, W, W, W, W, W, W, W, W, W, W, W, W, F, W],
+[W, F, W, W, F, F, F, F, F, F, F, F, F, F, W, F, F, F, F, F, W, F, F, F, F, F, F, F, F, F, F, W, W, F, W],
+[W, F, W, W, F, W, W, W, W, W, W, W, W, F, W, F, F, F, F, F, W, F, W, W, W, W, W, W, W, W, F, W, W, F, W],
+[W, F, F, F, F, W, F, F, F, F, F, F, F, F, W, F, F, F, F, F, W, F, F, F, F, F, F, F, F, W, F, F, F, F, W],
+[W, W, W, W, W, W, W, W, F, W, W, W, W, W, W, F, F, F, F, F, W, W, W, W, W, W, F, W, W, W, W, W, W, W, W],
+[W, F, F, F, F, F, F, F, F, F, W, F, F, F, W, F, F, F, F, F, W, F, F, F, W, F, F, F, F, F, F, F, F, F, W],
+[W, W, F, W, W, W, W, W, W, W, W, F, W, F, W, F, F, F, F, F, W, F, W, F, W, W, W, W, W, W, W, W, F, W, W],
+[W, F, F, F, F, F, F, F, W, F, W, F, W, F, W, F, F, F, F, F, W, F, W, F, W, F, W, F, F, F, F, F, F, F, W],
+[W, W, W, W, W, W, W, F, W, F, W, F, W, F, W, F, F, F, F, F, W, F, W, F, W, F, W, F, W, W, W, W, W, W, W],
+[W, F, F, F, F, F, W, F, W, F, F, F, W, F, W, F, F, F, F, F, W, F, W, F, F, F, W, F, W, F, F, F, F, F, W],
+[W, W, W, W, W, F, W, F, W, F, W, F, W, F, W, F, F, F, F, F, W, F, W, F, W, F, W, F, W, F, W, W, W, W, W],
+[W, F, F, F, W, F, W, F, W, F, W, F, W, F, W, F, F, F, F, F, W, F, W, F, W, F, W, F, W, F, W, F, F, F, W],
+[W, F, W, F, W, F, F, F, W, F, W, F, W, F, W, F, F, F, F, F, W, F, W, F, W, F, W, F, F, F, W, F, W, SU, W],
+[W, W, W, F, F, F, W, W, W, F, W, W, W, F, W, F, F, F, F, F, W, F, W, W, W, F, W, W, W, F, F, F, W, W, W],
+[Q, Q, W, F, W, F, F, F, F, F, W, F, F, F, F, F, F, F, F, F, W, F, F, F, W, F, F, F, F, F, W, F, W, Q, Q],
+[Q, Q, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, Q, Q]]
+
 #dungeon 1, floor 4
 boss = [
 [Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q],
@@ -128,4 +160,4 @@ boss = [
 [Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, W, SU,W, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q],
 [Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, W, W, W, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, Q] ]
 
-allmaps = [[[s1_f1, 0], [s1_f2, 0], [boss, 0]], [boss]]
+allmaps = [[[s1_f1, 0], [s1_f2, 0], [s1_f3, 0], [boss, 0]], [boss]]

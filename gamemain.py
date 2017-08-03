@@ -40,15 +40,15 @@ if __name__ == "__main__":
 	inMaze = False
 	titlescreen = title.Title(screen, 800, 600)
 	music = gamemusic.MusicPlayer()
-	town = gametown.Town(screen, 800, 600)
+	
 	toggle = 1
 	display = True
 	go = False
-	base = [60, 60, 26, 26, [9, 5, 8, 6, 4], ["", "", "", ""], 24, 17]
+	base = [30, 60, 26, 26, [9, 5, 8, 6, 4], ["", "", "", ""], 24, 17]
 	
 	enemy = [Character(base, 1, "En1"), Character(base, 1, "En2"), Character(base, 1, "En3"), Character(base, 1, "En4"), Character(base, 1, "En5")] 
 	party = [Character(base, 1, "Char1"), Character(base, 1, "Char2"), Character(base, 1, "Char3"), Character(base, 1, "Char4"), Character(base, 1, "Char5")] 
-
+	town = gametown.Town(screen, 800, 600, party)
 
 
 	music.title()
@@ -184,12 +184,12 @@ if __name__ == "__main__":
 							
 						battlecheck = random.randint(0, 200)
 
-						music.Stop()
+						music.Stop2()
 						bs = gamebattle.BattleScene(screen, 800, 600, party, enemy)
 						music.battleStart()
 						result = bs.Display() 
 						
-						music.Stop()
+						music.Stop2()
 						music.mazeStart()
 
 						if result == 0:
