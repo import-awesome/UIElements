@@ -50,7 +50,9 @@ if __name__ == "__main__":
 	enemy = [Character(base, 1, "En1"), Character(base, 1, "En2"), Character(base, 1, "En3"), Character(base, 1, "En4"), Character(base, 1, "En5")] 
 	party = [Character(base, 1, "Char1"), Character(base, 1, "Char2"), Character(base, 1, "Char3"), Character(base, 1, "Char4"), Character(base, 1, "Char5")] 
 	town = gametown.Town(screen, 800, 600, party)
-
+	save_hp = []
+	save_mp = []
+	revert = 0
 
 	music.title()
 	if -1 == titlescreen.Display():
@@ -92,6 +94,13 @@ if __name__ == "__main__":
 										check = False
 										if selectorx == 300:
 											inMaze = False
+											if revert == 1:
+												#for x, y, z in party, save_hp, save_mp:
+												#	x.mhp = y
+												#	x.mmp = z
+												revert = 0
+												save_mp = []
+												save_hp = []
 									if event2.key == pygame.K_LEFT:
 										if selectorx != 300:
 											selectorx -= 120
@@ -181,7 +190,7 @@ if __name__ == "__main__":
 							enemy = [Character(base, 1, "En1"), Character(base, 1, "En2"), Character(base, 1, "En3"), Character(base, 1, "En4"), Character(base, 1, "En5")] 
 
 						if battlecheck >= 190:
-							enemy = [Character(base, 1, "En1"), Character(base, 1, "En2")] 
+							enemy = [Character(base, 1, "En1")] 
 							
 						battlecheck = random.randint(0, 200)
 
@@ -211,9 +220,18 @@ if __name__ == "__main__":
 
 		else:
 			music.Stop()
+			for x in party:
+				save_hp.append(x.mhp)
+				save_mp.append(x.mmp)
+
 			music.townStart()
 			if 1 == town.Display():
 				inMaze = True
+				#for x, y, z in party, save_hp, save_mp:
+				#	if x.mmp != z or x.mhp != y:
+				#		revert = 1
+				#		break
+
 
 			else:
 				display = False

@@ -43,6 +43,13 @@ class Town(object):
 		enter_t = self.small.render(entermaze, 1, TOWNBLUE)
 		display = True
 		option = 0
+		revert = 0
+		save_mp = []
+		save_hp = []
+		for x in self.party:
+			save_hp.append(x.mhp)
+			save_mp.append(x.mmp)
+
 		townselecty = int((self.winy*9)/20)
 		towninn = Inn(self.screen, self.winx, self.winy, self.party)
 		townbar = Bar(self.screen, self.winx, self.winy, self.party)
