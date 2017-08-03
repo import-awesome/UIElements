@@ -366,7 +366,7 @@ class menuselect(object):
 							#living[selection].physdefence += 10
 							living[selection].hp += 10
 							self.b.battlequeue.append([living[selection], None, 0])
-							selecion += 1
+							selection += 1
 						if self.char_y == self.winy / 2 + 105:
 							print "Run"
 							run = True
