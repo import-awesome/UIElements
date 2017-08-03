@@ -349,7 +349,8 @@ class menuselect(object):
 							print "Attack"
 							es = enemyselect(self.screen, self.winx, self.winy, self.b, selection, living)
 							if False == es.Display():
-								selection -= 1
+								if selection > 0:
+									print self.b.battlequeue
 
 							else:
 								selection += 1
