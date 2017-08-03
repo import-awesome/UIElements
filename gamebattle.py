@@ -462,7 +462,7 @@ def battlecalc(screen, winx, winy, character, enemy, direction, action = 0):
 			act2 = "{} lost {} hp!".format(character.name, int(math.floor((3*enemy.stats[0] - character.physdefence) * math.sqrt(enemy.stats[0]/character.stats[2]) * rand)))
 			act3 = "{} dies!".format(character.name)
 			if character.hp <= 0:
-				act = "{} is already dead.".format(character.hp)
+				act = "{} is already dead.".format(character.name)
 				act_t = small.render(act, 1, WHITE)
 				while framecounter < 45:
 					screen.blit(act_t, (winx/4 -30, winy/2+85))
@@ -505,6 +505,17 @@ def battlecalc(screen, winx, winy, character, enemy, direction, action = 0):
 			act_t = small.render(act, 1, WHITE)
 			act2_t = small.render(act2, 1, WHITE)
 			act3_t = small.render(act3, 1, WHITE)
+			if enemy.hp <= 0:
+				act = "{} is already dead.".format(enemy.name)
+				act_t = small.render(act, 1, WHITE)
+				while framecounter < 45:
+					screen.blit(act_t, (winx/4 -30, winy/2+85))
+					framcounter += 1
+
+					clock.tick(60)
+					pygame.display.flip()
+				return
+
 			while framecounter < 90:
 				pygame.draw.rect(screen, WHITE, (winx/4 - 35, winy/2+80, 450, 40))
 				pygame.draw.rect(screen, GREY, (winx/4 -33, winy/2+82, 446, 36))
@@ -539,23 +550,16 @@ if __name__ == "__main__":
 	display = True
 	turn = 1
 	#b.DisplayTurn(b.turn)
-
 	menu = menuselect(screen, 800, 600, b)
-
 	while display:
-
 		if 0 == menu.Display():
 			break
-
 		for event in pygame.event.get():
 			if event.type == pygame.QUIT:
 				display = False
 				go = True
-
-
 		b.turn += 1
 					#b.turn += 1
-
 		screen.fill(BLACK)
 		#maze.Display()
 		#borders.Display()
@@ -565,6 +569,5 @@ if __name__ == "__main__":
 		b.DisplayTurn(b.turn)
 		clock.tick(60)
 		pygame.display.flip()
-
 	pygame.quit()
 	"""
