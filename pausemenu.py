@@ -1,4 +1,5 @@
 import pygame
+import json
 
 pygame.init()
 
@@ -21,15 +22,21 @@ class Pause_Menu(object):
         self.winx = winx
         self.winy = winy
         self.word_pause_font = pygame.font.Font(None, 30)
+        self.weapons_items_font = pygame.font.Font(None, 10)
         self.small = pygame.font.Font(None, 30)
         self.big = pygame.font.Font(None, 50)
         self.char1_x = winx / 16
         self.char_y = winy - 75
+
+        self.weapons = weapons
+        self.items = items
+
         self.test1 = pygame.image.load('Test1.jpeg')
         self.test2 = pygame.image.load('Test2.jpeg')
         self.test3 = pygame.image.load('Test3.jpeg')
         self.test4 = pygame.image.load('Test4.jpeg')
         self.test5 = pygame.image.load('Test5.jpeg')
+        
         self.pause = True
 
 
@@ -59,14 +66,31 @@ class Pause_Menu(object):
         text_rectangle.center = ( (x +(width / 2)), (y + (height / 2)) )
         self.screen.blit(text_surface, text_rectangle)
 
+
+    # The name says it all
+    def unpause(self):
+        pause = False
+
+
     # The name says it all
     def quitgame(self):
         pygame.quit()
         quit()
 
     # The name says it all
-    def unpause(self):
-        pause = False
+    #def save(self):
+    #    with open('save_game.json', 'w+') as file:
+    #        saving_text = self.word_pause_font.render("Saving Your Progress", True, RED)
+    #        self.screen.blit(saving_text, (400, 300))
+    #        saved_data = [(self.characters)
+    #                for member in self.characters]
+    #        json.dump(saved_data, file)
+
+
+    # The name says it all
+    #def load(self):
+            
+
 
     # The name says it all
     def paused(self):
@@ -94,8 +118,6 @@ class Pause_Menu(object):
             self.pause_menu_button("Quit", 230, 550, 100, 50, WHITE, RED, self.quitgame)
             self.pause_menu_button("Save",450, 550, 100, 50, WHITE, RED, self.unpause)
             self.pause_menu_button("Load", 680, 550, 100, 50, WHITE, RED, self.unpause)
-
-            # Add load and save buttons
 
             clock.tick(60)
             pygame.display.update()
@@ -176,7 +198,10 @@ if __name__ == "__main__":
     winx = display_width / 16
     winy = display_height / 75
     base = [60, 60, 26, 26, [9, 5, 8, 6, 4], ["", "", "", ""], 24, 17]
-    party = [Character(base, 1, "Test1"), Character(base, 1, "Test2"), Character(base, 1, "Test3"), Character(base, 1, "Test4"), Character(base, 1, "Test5")]
+    party = [Character(base, 1, "Rune"), Character(base, 1, "Medic"), Character(base, 1, "Fort"), Character(base, 1, "Night"), Character(base, 1, "Land")]
+
+    weapons = {"Training Sword" : {"Str" : 3, "Attack" : 5}}
+    items = {1: "Warp Wire", 2: {"Name": "Potion", "Up": 20}}
 
     # The game isn't paused until the 'x' key is pressed
     pause = False
