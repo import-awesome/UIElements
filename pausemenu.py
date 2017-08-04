@@ -20,16 +20,22 @@ class Pause_Menu(object):
         self.screen = screen
         self.winx = winx
         self.winy = winy
+        self.word_pause_font = pygame.font.Font(None, 30)
         self.small = pygame.font.Font(None, 30)
-        self.big = pygame.font.Font(None, 115)
+        self.big = pygame.font.Font(None, 50)
         self.char1_x = winx / 16
         self.char_y = winy - 75
+        self.test1 = pygame.image.load('Test1.jpeg')
+        self.test2 = pygame.image.load('Test2.jpeg')
+        self.test3 = pygame.image.load('Test3.jpeg')
+        self.test4 = pygame.image.load('Test4.jpeg')
+        self.test5 = pygame.image.load('Test5.jpeg')
         self.pause = True
 
 
     # The text that appears on the screen surface and its color
     def pause_menu_text(self, text, font):
-        surface_text = self.small.render(text, True, BLACK)
+        surface_text = self.word_pause_font.render(text, True, BLACK)
         return surface_text, surface_text.get_rect()
 
     ''' Continue, quit, load, and save buttons
@@ -45,9 +51,10 @@ class Pause_Menu(object):
                 action()         
         else:
             pygame.draw.rect(self.screen, color1, (x, y, width, height))
-        button_text_font = pygame.font.SysFont("comicsansms",30)
+    
 
         # Buttons have a rectangle around them for highlighting (text_rectangle)
+        button_text_font = pygame.font.SysFont("comicsansms",30)
         text_surface, text_rectangle = self.pause_menu_text(button_msg, button_text_font)
         text_rectangle.center = ( (x +(width / 2)), (y + (height / 2)) )
         self.screen.blit(text_surface, text_rectangle)
@@ -64,24 +71,29 @@ class Pause_Menu(object):
     # The name says it all
     def paused(self):
         pause_text_font = pygame.font.SysFont("comicsansms",115)
-        text_surface, text_rectangle = self.pause_menu_text("Paused", pause_text_font)
-        text_rectangle.center = ((display_width / 2), (display_height / 2))
+        text_surface, text_rectangle = self.pause_menu_text("Pause Menu", pause_text_font)
+        text_rectangle.center = ((display_width / 2), (display_height / 12))
+        
         p = True
-        # Pause screen color
-      
 
+        # p is short for pause
         while p:
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
                     pygame.quit()
                     p = False
                     quit()
+            
             self.screen.fill(WHITE)
 
-        # Pause screen covers the game screen
+            self.DisplayParty()
+
+            # Pause screen covers the game screen
             self.screen.blit(text_surface, text_rectangle)
-            self.pause_menu_button("Continue",150, 450, 100, 50, WHITE, RED, self.unpause)
-            self.pause_menu_button("Quit", 550, 450, 100, 50, WHITE, RED, self.quitgame)
+            self.pause_menu_button("Continue", 30, 550, 100, 50, WHITE, RED, self.unpause)
+            self.pause_menu_button("Quit", 230, 550, 100, 50, WHITE, RED, self.quitgame)
+            self.pause_menu_button("Save",450, 550, 100, 50, WHITE, RED, self.unpause)
+            self.pause_menu_button("Load", 680, 550, 100, 50, WHITE, RED, self.unpause)
 
             # Add load and save buttons
 
@@ -89,21 +101,46 @@ class Pause_Menu(object):
             pygame.display.update()
 
     def DisplayParty(self):
+
+        # Set the size of the character images
+        self.test1 = pygame.transform.scale(self.test1, (150, 150))
+        self.test2 = pygame.transform.scale(self.test2, (150, 150))
+        self.test3 = pygame.transform.scale(self.test3, (150, 150))
+        self.test4 = pygame.transform.scale(self.test4, (150, 150))
+        self.test5 = pygame.transform.scale(self.test5, (150, 150))
+
+        # Make a rectangle to display the character images
+        self.test1.get_rect()
+        self.test2.get_rect()
+        self.test3.get_rect()
+        self.test4.get_rect()
+        self.test5.get_rect()
+
         shift = 0
         for x in self.characters:
-            name_t = self.big.render(x.name, 1, WHITE)
-            hp_t = self.small.render("HP: {} / {}".format(x.hp, x.mhp), 1, WHITE)
+            name_t = self.big.render(x.name, 1, BLACK)
+            hp_t = self.small.render("HP: {} / {}".format(x.hp, x.mhp), 1, BLACK)
             
             if x.isDead():
                 hp_t = self.small.render("Dead", 1, WHITE)
-                #continue
-            mp_t = self.small.render("MP: {} / {}".format(x.mp, x.mmp), 1, WHITE)
-            pygame.draw.rect(self.screen, WHITE, (self.char1_x  - 20 + (shift * 3 * self.char1_x), self.char_y - 40, 130, 100))
-            pygame.draw.rect(self.screen, GREY, (self.char1_x  - 20 + (shift * 3 * self.char1_x) + 2, self.char_y - 38, 126, 96))
-            self.screen.blit(name_t, (self.char1_x +  10 + (shift * 3 * self.char1_x), self.char_y - 40))
-            self.screen.blit(hp_t, (self.char1_x - 15 + (shift * 3 * self.char1_x), self.char_y))
-            self.screen.blit(mp_t, (self.char1_x - 15 + (shift * 3 * self.char1_x), self.char_y+30))
+                
+            mp_t = self.small.render("MP: {} / {}".format(x.mp, x.mmp), 1, BLACK)
+            self.test1
+
+            pygame.draw.rect(self.screen, BLACK, (self.char1_x  - 20 + (shift * 3 * self.char1_x), self.char_y - 220, 130, 100))
+            pygame.draw.rect(self.screen, BLUE, (self.char1_x  - 20 + (shift * 3 * self.char1_x) + 2, self.char_y - 218, 126, 96))
+            self.screen.blit(name_t, (self.char1_x + (shift * 3 * self.char1_x), self.char_y - 255))
+            self.screen.blit(hp_t, (self.char1_x - 15 + (shift * 3 * self.char1_x), self.char_y - 200))
+            self.screen.blit(mp_t, (self.char1_x - 15 + (shift * 3 * self.char1_x), self.char_y - 170))
+        
             shift += 1
+
+        # Move the image to the desired location
+        self.screen.blit(self.test1, (7, 110))
+        self.screen.blit(self.test2, (160, 110))
+        self.screen.blit(self.test3, (313, 110))
+        self.screen.blit(self.test4, (466, 110))
+        self.screen.blit(self.test5, (619, 110))
 
 
     def Display(self):
@@ -126,6 +163,7 @@ class Pause_Menu(object):
 if __name__ == "__main__":
     import chartemplate
     from chartemplate import Character
+    import items
     
     # Screen dimensions
     display_width = 800
@@ -143,7 +181,7 @@ if __name__ == "__main__":
     # The game isn't paused until the 'x' key is pressed
     pause = False
 
-    p = Pause_Menu(screen, 800, 600, party)
-    p.Display()
+    pause_menu = Pause_Menu(screen, 800, 600, party)
+    pause_menu.Display()
 
 
